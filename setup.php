@@ -36,7 +36,7 @@ class YoastCMB2Analysis {
   }
 
   public function check_for_cmb2() {
-    if(!is_plugin_active('cmb2/init.php') && !has_action('cmb2_init')) {
+    if(!class_exists('CMB2', false) && !defined('CMB2_LOADED')) {
       add_action('admin_notices', [$this, 'require_cmb2_message']);
 
       return true;
