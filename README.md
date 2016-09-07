@@ -31,8 +31,8 @@ fields but it can also be used in a number of different ways:
 
 ## WordPress and Yoast SEO dependencies
 
-Currently, this plugin has been tested and working with WordPress
-`4.5` and Yoast SEO `3.2.3`
+Currently, this plugin has been tested up to WordPress
+`4.6` and Yoast SEO `3.5`
 
 This plugin will be updated and retested with new versions of both
 WordPress and the Yoast SEO plugin, with the version numbers above
