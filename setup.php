@@ -46,10 +46,11 @@ class YoastCMB2Analysis {
   }
 
   public function check_for_yoast_seo() {
-    if(!is_plugin_active('wordpress-seo/wp-seo.php')) {
-      add_action('admin_notices', [$this, 'require_yoast_message']);
+    if(!is_plugin_active('wordpress-seo/wp-seo.php') &&
+      !is_plugin_active('wordpress-seo-premium/wp-seo-premium.php')) {
+        add_action('admin_notices', [$this, 'require_yoast_message']);
 
-      return true;
+        return true;
     }
 
     return false;
