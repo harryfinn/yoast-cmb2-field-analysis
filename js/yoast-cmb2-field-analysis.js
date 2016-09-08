@@ -4,7 +4,7 @@
       YoastSEO.app.registerPlugin('YoastCMB2FieldAnalysis', {status: 'ready'});
       YoastSEO.app.registerModification(
         'content',
-        this.addAcfFieldsToContent,
+        this.addCMB2FieldsToContent,
         'YoastCMB2FieldAnalysis'
       );
 
@@ -15,7 +15,7 @@
       });
     };
 
-    YoastCMB2FieldAnalysis.prototype.addAcfFieldsToContent = function(data) {
+    YoastCMB2FieldAnalysis.prototype.addCMB2FieldsToContent = function(data) {
       var cmb2_content;
 
       $('#post-body').find(
