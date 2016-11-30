@@ -77,7 +77,7 @@ class YoastCMB2Analysis {
   }
 
   public function enqueue_scripts($page_hook) {
-    if($page_hook !== 'post.php') return;
+    if($page_hook !== 'post.php' && $page_hook !== 'post-new.php') return;
 
     $current_screen = get_current_screen();
     $current_post_type = get_post_type_object($current_screen->post_type);
