@@ -82,7 +82,7 @@ class YoastCMB2Analysis {
     $current_screen = get_current_screen();
     $current_post_type = get_post_type_object($current_screen->post_type);
 
-    if($current_post_type->public === false) return;
+    if( $this->check_if_yoast_seo_is_hidden($current_post_type->name) === true ) return;
 
     wp_register_script(
       'yoast-cmb2-plugin-js',
@@ -91,6 +91,30 @@ class YoastCMB2Analysis {
       $this->plugin_data['Version']
     );
     wp_enqueue_script('yoast-cmb2-plugin-js');
+  }
+
+
+  /**
+   * Test whether Yoast SEO is hidden either by choice of the admin or because
+   * the post type is not a public post type
+   *
+   *
+   * @param  string $post_type (optional) The post type to test, defaults to the current post post_type.
+   *
+   * @return  bool        Whether or not the yoast seo metabox should be hidden
+   */
+  function check_if_yoast_seo_is_hidden( $post_type = null ) {
+    if ( ! isset( $post_type ) && ( isset( $GLOBALS['post'] ) && ( is_object( $GLOBALS['post'] ) && isset( $GLOBALS['post']->post_type ) ) ) ) {
+      $post_type = $GLOBALS['post']->post_type;
+    }
+
+    if ( isset( $post_type ) ) {
+      // Don't make static as post_types may still be added during the run.
+      $cpts    = get_post_types( array( 'public' => true ), 'names' );
+      $options = get_option( 'wpseo_titles' );
+      return ( ( isset( $options[ 'hideeditbox-' . $post_type ] ) && $options[ 'hideeditbox-' . $post_type ] === true ) || in_array( $post_type, $cpts ) === false );
+    }
+    return false;
   }
 }
 
