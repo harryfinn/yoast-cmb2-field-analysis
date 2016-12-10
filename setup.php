@@ -104,7 +104,6 @@ class YoastCMB2Analysis {
    * @return  bool        Whether or not the yoast seo metabox should be hidden
    */
   private function check_if_yoast_seo_is_hidden($post_type = null) {
-
     $global_post = $GLOBALS['post'];
 
     if (!isset($post_type) && (isset($global_post) && (is_object($global_post)
