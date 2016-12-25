@@ -113,7 +113,7 @@ class YoastCMB2Analysis {
 
     if(isset($post_type)) {
       // Don't make static as post_types may still be added during the run.
-      $cpts    = get_post_types(array('public' => true),'names');
+      $cpts    = get_post_types(['public' => true], 'names');
       $options = get_option('wpseo_titles');
       return ((isset($options['hideeditbox-' . $post_type]) && $options['hideeditbox-' . $post_type] === true)
           || in_array($post_type, $cpts) === false);
