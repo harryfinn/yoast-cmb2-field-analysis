@@ -106,12 +106,12 @@ class YoastCMB2Analysis {
   private function check_if_yoast_seo_is_hidden($post_type = null) {
     $global_post = $GLOBALS['post'];
 
-    if (!isset($post_type) && (isset($global_post) && (is_object($global_post)
+    if(!isset($post_type) && (isset($global_post) && (is_object($global_post)
       && isset($global_post->post_type)))) {
       $post_type = $global_post->post_type;
     }
 
-    if ( isset( $post_type ) ) {
+    if(isset($post_type)) {
       // Don't make static as post_types may still be added during the run.
       $cpts    = get_post_types(array('public' => true),'names');
       $options = get_option('wpseo_titles');
