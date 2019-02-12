@@ -16,7 +16,7 @@ class YoastCMB2Analysis {
 
   public function __construct() {
     add_action('admin_init', [$this, 'plugin_admin_setup']);
-    add_action('admin_enqueue_scripts', [$this, 'enqueue_scripts']);
+    add_action('admin_enqueue_scripts', [$this, 'enqueue_scripts'], 99);
   }
 
   public function plugin_admin_setup() {
